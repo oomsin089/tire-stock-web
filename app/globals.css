@@ -1,0 +1,247 @@
+/* ============================================================
+   Tire Stock — ระบบดีไซน์
+   แนว "อู่/ร้านยาง": กราไฟต์เข้ม + เหลืองอำพัน (ชอล์กมาร์กยาง)
+   ตัวเลข = ฟอนต์ mono, ตัวหนังสือไทย = IBM Plex Sans Thai
+   ============================================================ */
+
+:root {
+  --ink: #1b1d22;         /* กราไฟต์ (สียาง) */
+  --ink-soft: #33363d;
+  --paper: #f7f6f2;       /* พื้นกระดาษ */
+  --surface: #ffffff;
+  --amber: #e8890c;       /* สีเน้น — ชอล์กมาร์กยาง/ป้ายในอู่ */
+  --amber-deep: #c9760a;
+  --amber-soft: #fbead0;
+  --green: #2f855a;
+  --green-soft: #e4f2ea;
+  --red: #c53030;
+  --red-soft: #fbe6e6;
+  --line: #e6e4de;
+  --muted: #6b7280;
+
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(27, 29, 34, 0.06), 0 4px 16px rgba(27, 29, 34, 0.05);
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --sans: "IBM Plex Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- โครงหน้า ---------- */
+.shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  border-bottom: 3px solid var(--amber);
+}
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 62px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-plate {
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 15px;
+  background: var(--amber);
+  color: var(--ink);
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.brand-sub { font-size: 13px; color: #b9bcc4; letter-spacing: 0.02em; }
+
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a {
+  padding: 7px 13px;
+  border-radius: 7px;
+  font-size: 14px;
+  color: #c7cad1;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.nav a.active { background: var(--amber); color: var(--ink); font-weight: 500; }
+
+.main { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 30px 24px 64px; }
+
+/* ---------- หัวข้อหน้า ---------- */
+.page-head { margin-bottom: 24px; }
+.page-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+}
+.page-title { font-size: 27px; font-weight: 600; margin: 3px 0 0; letter-spacing: -0.01em; }
+.page-desc { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+
+/* ---------- การ์ดสรุป ---------- */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.stat-value {
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.stat-value .unit { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 5px; }
+
+/* ---------- กล่องเนื้อหา ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.card-head h2 { font-size: 16px; margin: 0; font-weight: 600; }
+.card-body { padding: 20px; }
+
+/* ---------- ตาราง ---------- */
+.table-wrap { overflow-x: auto; }
+table.grid { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.grid th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+table.grid td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+table.grid tr:last-child td { border-bottom: none; }
+table.grid tbody tr:hover { background: #fbfaf7; }
+.num { font-family: var(--mono); text-align: right; }
+.qty-strong { font-family: var(--mono); font-weight: 600; font-size: 15px; }
+
+/* ป้ายพื้นที่เก็บ — signature "chalk tag" */
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--amber);
+  color: var(--amber-deep);
+  background: var(--amber-soft);
+  letter-spacing: 0.03em;
+}
+.tag.lot { border-color: var(--line); color: var(--muted); background: #f4f3ef; }
+
+/* ---------- ฟอร์ม ---------- */
+.form-grid { display: grid; gap: 16px; max-width: 520px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.field .hint { font-size: 12px; color: var(--muted); }
+input, select {
+  font-family: var(--sans);
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  width: 100%;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px var(--amber-soft);
+}
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ---------- ปุ่ม ---------- */
+.btn {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter 0.15s, background 0.15s;
+}
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-primary { background: var(--amber); color: var(--ink); }
+.btn-primary:hover:not(:disabled) { filter: brightness(1.05); }
+.btn-ghost { background: #fff; border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover:not(:disabled) { background: var(--paper); }
+
+/* ---------- แถบแจ้งผล ---------- */
+.alert {
+  padding: 11px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.alert-ok { background: var(--green-soft); color: var(--green); border: 1px solid #bfe0cd; }
+.alert-err { background: var(--red-soft); color: var(--red); border: 1px solid #f0c2c2; }
+
+/* ---------- เบ็ดเตล็ด ---------- */
+.toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-left: auto; }
+.toolbar input, .toolbar select { width: auto; min-width: 130px; padding: 7px 10px; font-size: 14px; }
+.empty { text-align: center; padding: 44px 20px; color: var(--muted); }
+.empty .big { font-family: var(--mono); font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.loading { padding: 40px; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 14px; }
+.count-note { font-size: 13px; color: var(--muted); font-family: var(--mono); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+
+@media (max-width: 720px) {
+  .row-2, .two-col { grid-template-columns: 1fr; }
+  .page-title { font-size: 23px; }
+}
